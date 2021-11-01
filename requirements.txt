@@ -1,4 +1,4 @@
 Flask==2.0.2
 numpy
-tensorflow
+tensorflow-cpu
 Pillow==8.4.0
