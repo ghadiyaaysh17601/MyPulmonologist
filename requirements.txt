@@ -1,4 +1,5 @@
 Flask==2.0.2
 numpy
 tensorflow-cpu
+gunicorn
 Pillow==8.4.0
