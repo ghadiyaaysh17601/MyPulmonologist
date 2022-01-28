@@ -40,7 +40,7 @@
 
 This project is about the classification of different lung diseases like COVID, Pneumonia, Tuberculosis, and Lung Cancer using chest-Xrays and CT scan images.
 
-##Dataset
+## Dataset
 Dataset Used:
 1. https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
 2. https://www.kaggle.com/prashant268/chest-xray-covid19-pneumonia
