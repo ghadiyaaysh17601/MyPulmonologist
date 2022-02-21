@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir tensorflow_cpu-2.7.1-cp38-cp38-manylinux2010_x86_
 RUN pip install -r requirements.txt
 EXPOSE 5001
 
-CMD [“python”, “./app.py”]
+CMD [“python”, “/app.py”]
