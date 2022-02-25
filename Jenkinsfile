@@ -1,17 +1,37 @@
-node {
-   stage('Get Source') {
-      // copy source code from local file system and test
-      // for a Dockerfile to build the Docker image
-      git ('https://github.com/ghadiyaaysh17601/MyPulmonologist.git')
-      if (!fileExists("dockerfile")) {
-         error('Dockerfile missing.')
-      }
-   }
-   stage('Build Docker') {
-       // build the docker image from the source code using the BUILD_ID parameter in image name
-         sh "sudo docker build -t flask-a ."
-   }
-   stage("run docker container"){
-        sh "sudo docker run -p 8000:8000 --name flask-app -d flask-a "
-    }
+pipeline {
+agent any
+stages {
+	stage('Build') {
+	parallel {
+		stage('Build') {
+		steps {
+			sh 'echo "building the repo"'
+		}
+		}
+	}
+	}
+
+
+	stage('Deploy')
+	{
+	steps {
+		echo "deploying the application"
+		sh "sudo nohup python app.py > log.txt 2>&1 &"
+	}
+	}
+}
+
+post {
+		always {
+			echo 'The pipeline completed'
+			junit allowEmptyResults: true, testResults:'**/test_reports/*.xml'
+		}
+		success {				
+			echo "Flask Application Up and running!!"
+		}
+		failure {
+			echo 'Build stage failed'
+			error('Stopping early…')
+		}
+	}
 }
