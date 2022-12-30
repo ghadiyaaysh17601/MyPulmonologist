@@ -1,11 +1,5 @@
 {
-    "version": 2,
-    "name": "cmc-proxy",
-    "builds": [{ "src": "proxy.js", "use": "@vercel/node" }],
-    "routes":[{
-          "src": "/(.*)", "dest": "proxy.js"
-        }],
-    "env": {
-        "CMC_API_KEY": "@cmc_api_key"
-      }
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/app" }
+    ]
 }
