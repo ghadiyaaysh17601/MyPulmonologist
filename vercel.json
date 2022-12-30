@@ -1,15 +1,11 @@
 {
-  "version": 2,
-  "builds": [
-      {
-          "src": "*.py",
-          "use": "@liudonghua123/now-flask"
+    "version": 2,
+    "name": "cmc-proxy",
+    "builds": [{ "src": "proxy.js", "use": "@vercel/node" }],
+    "routes":[{
+          "src": "/(.*)", "dest": "proxy.js"
+        }],
+    "env": {
+        "CMC_API_KEY": "@cmc_api_key"
       }
-  ],
-  "routes": [
-      {
-          "src": "(.*)",
-          "dest": "app.py"
-      }
-  ]
 }
